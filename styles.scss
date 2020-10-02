@@ -1,0 +1,859 @@
+$mainBlue: #052699;
+$mainYellow: #fed02c;
+$darkNavy: #020221;
+
+body {
+  padding: 0;
+  margin: 0;
+  // font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Raleway", sans-serif;
+  background: #f2f2f2;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $darkNavy;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    // padding: 0 8%;
+
+    li {
+      margin: 0 70px;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: bold;
+
+      a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          color: $mainYellow;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+
+    img {
+      height: 70px;
+    }
+
+    .logoText {
+      margin-top: 5px;
+      font-size: 18px;
+      color: $mainYellow;
+    }
+  }
+}
+
+.nav2 {
+  position: fixed;
+  width: 200px;
+  // height: 500px;
+  height: 90vh;
+  background: rgba(0, 0, 128, 0.6);
+  right: -50rem;
+  transition: all 0.8s ease;
+  padding-bottom: 10px;
+  padding-top: 100px;
+
+  .navLinks {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    li {
+      list-style: none;
+      font-size: 20px;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      margin: 15px 0;
+      letter-spacing: 5px;
+      z-index: 6;
+
+      a {
+        color: white;
+        text-decoration: none;
+        transition: all 0.8s ease;
+        z-index: 7;
+      }
+
+      .underline {
+        visibility: hidden;
+        width: 100%;
+        height: 10px;
+        padding-top: 30px;
+        transform: scaleX(0);
+        // webkit-transition: all 0.2s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        border-bottom: 2px solid $mainYellow;
+      }
+      &:hover {
+        .underline {
+          visibility: visible;
+          transform: scaleX(1);
+          width: 100%;
+          height: 10px;
+          transition: all 0.3s ease-in-out;
+        }
+        a {
+          color: $mainYellow;
+        }
+      }
+    }
+  }
+}
+
+.nav2.expanded {
+  top: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.hamburger {
+  position: fixed;
+  right: 2rem;
+  top: 2rem;
+  width: 2.5rem;
+  height: 2rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.hamburger .hamburger-bar,
+.hamburger .hamburger-bar::before,
+.hamburger .hamburger-bar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  background: white;
+  width: 100%;
+  border-radius: 30px;
+  height: 0.2rem;
+  z-index: 5;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+}
+
+.hamburger .hamburger-bar {
+  margin-top: 0;
+
+  &:before {
+    margin-top: -10px;
+  }
+  &:after {
+    margin-top: 10px;
+  }
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.hamburger.expanded .hamburger-bar {
+  background: transparent;
+  // background: white;
+  z-index: 5;
+
+  &:before,
+  &:after {
+    // background: black;
+    // background: white;
+    z-index: 5;
+    margin-top: 0;
+  }
+  &:before {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+  }
+  &:after {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+  }
+}
+
+.hidden {
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  header {
+    padding: 0 20px;
+  }
+  header {
+    nav {
+      display: none;
+    }
+    .hamburger {
+      display: inline;
+    }
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .hamburger {
+    display: none;
+  }
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainPhoto {
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .slideShow {
+    flex: 1;
+    width: 100%;
+    position: relative;
+    margin: auto;
+    height: 100%;
+
+    .myslides {
+      flex: 1;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 1;
+      -webkit-transition: opacity 1s;
+      -moz-transition: opacity 1s;
+      -o-transition: opacity 1s;
+      transition: opacity 1s;
+
+      &.showing {
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+
+    .image2 {
+      flex: 1;
+      width: 100%;
+      height: 85vh;
+      position: relative;
+    }
+  }
+
+  .buttons {
+    z-index: 3;
+    position: absolute;
+    bottom: 30px;
+
+    button {
+      padding: 10px 0;
+      width: 60px;
+      font-size: 18px;
+      border-radius: 6px;
+      margin: 0 20px;
+      text-transform: uppercase;
+      background: $mainYellow;
+      color: white;
+      border: none;
+      transition: background-color 0.5s ease-out;
+
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      &:hover {
+        background: white;
+        cursor: pointer;
+        a {
+          color: $mainYellow;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .mainPhoto {
+    .buttons {
+      button {
+        width: 80px !important;
+        color: blue;
+      }
+    }
+  }
+}
+
+// @keyframes fadeInOpacity {
+//   background: white;
+//   color: $mainYellow;
+// }
+
+#mainInfo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: none;
+  padding-bottom: none;
+
+  .title {
+    display: flex;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 45px;
+
+    .yellowTitle {
+      color: $mainYellow;
+      padding-left: 10px;
+    }
+  }
+}
+
+.gymIcons {
+  display: flex;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+
+  .classType {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 35px;
+    cursor: pointer;
+
+    .linkText {
+      padding-top: 10px;
+    }
+
+    &:hover {
+      color: $mainYellow;
+    }
+
+    .gymIcon {
+      height: 80px;
+      cursor: pointer;
+      margin: 0 50px;
+    }
+  }
+}
+
+.show {
+  &:before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 40%;
+    width: 0;
+    height: 0;
+    border: 26px solid transparent;
+    border-bottom-color: $darkNavy;
+    border-top: 0;
+  }
+  &:after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 41.5%;
+    width: 0;
+    height: 0;
+    border: 23px solid transparent;
+    border-bottom-color: $mainYellow;
+    border-top: 0;
+  }
+}
+
+.classTypeSection {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 450px;
+  margin-top: 0;
+
+  .mainClassText {
+    background: $mainYellow;
+    padding: 30px 50px;
+    flex: 4;
+    line-height: 2;
+
+    .toptitle {
+      display: flex;
+      font-weight: bold;
+      text-transform: uppercase;
+
+      .white {
+        color: white;
+        padding-left: 10px;
+      }
+    }
+  }
+  .classesImage {
+    flex: 2;
+    min-height: 450px;
+    .gymImageClasses {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#aboutSection {
+  padding: 4% 5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .imageOfConall {
+    border-radius: 50%;
+    height: 450px;
+    padding-right: 100px;
+  }
+
+  .aboutText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 2;
+
+    .toptitle {
+      display: flex;
+      font-size: 30px;
+      // text-align: center;
+
+      .yellow {
+        padding-left: 10px;
+        color: $mainYellow;
+      }
+    }
+  }
+}
+
+#timetableSection {
+  background: $darkNavy;
+  color: white;
+  padding-bottom: 40px;
+
+  .title {
+    display: flex;
+    font-size: 30px;
+    padding: 30px 0;
+    // text-transform: uppercase;
+
+    .yellow {
+      color: $mainYellow;
+      padding-left: 15px;
+    }
+  }
+
+  .listOfDays {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+
+    .firstDays,
+    .lastDays {
+      display: flex;
+      justify-content: space-between;
+
+      li {
+        list-style: none;
+        cursor: pointer;
+        margin: 0 20px;
+      }
+    }
+  }
+
+  select {
+    width: 200px;
+    background: none;
+    border: 2px solid $mainYellow;
+    padding: 10px;
+    font-size: 16px;
+    color: $mainYellow;
+    margin-bottom: 30px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .listOfDays {
+      display: none;
+    }
+    #calendarDays {
+      display: inline;
+    }
+  }
+  @media only screen and (min-width: 800px) {
+    #calendarDays {
+      display: none;
+    }
+  }
+
+  .calendarSection {
+    width: 35%;
+    padding: 20px 0;
+    // height: 400px;
+
+    .mainCalendar {
+      // width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .line {
+        width: 90%;
+        display: flex;
+        font-size: 15px;
+        text-transform: uppercase;
+        justify-content: space-between;
+        padding: 15px 50px;
+        background: $darkNavy;
+        border-radius: 6px;
+
+        .time {
+          display: flex;
+          .suffix {
+            font-size: 8px;
+            padding-left: 5px;
+            margin-top: 5px;
+          }
+        }
+      }
+
+      #changeColor {
+        background-color: #0b263a;
+      }
+    }
+  }
+}
+
+.showDay {
+  color: $mainYellow;
+}
+
+#detailsSection {
+  width: 80%;
+  min-height: 150px;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .detailsText {
+    .toptitle {
+      display: flex;
+      font-size: 30px;
+
+      .yellow {
+        padding-left: 10px;
+        color: $mainYellow;
+      }
+    }
+  }
+}
+
+#joinSection {
+  background: $darkNavy;
+  width: 100%;
+  padding: 80px 0;
+  // padding-bottom: 50px;
+
+  .subscribeBox {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $mainYellow;
+    padding: 40px;
+
+    .heading {
+      display: flex;
+      text-transform: uppercase;
+      font-size: 28px;
+      align-self: flex-start;
+      padding-left: 5%;
+
+      .white {
+        color: white;
+        padding-left: 15px;
+      }
+    }
+
+    .mainBox {
+      height: 50px;
+      width: 80%;
+      display: flex;
+      align-items: center;
+      letter-spacing: 2px;
+      padding-bottom: 40px;
+
+      #emailAddress {
+        flex: 5;
+        height: 95%;
+        background: white;
+        border: none;
+        box-shadow: 0 0 2px #ccc;
+        font-size: 17px;
+        padding-left: 30px;
+        letter-spacing: 2px;
+      }
+
+      .submit {
+        height: 100%;
+        flex: 2;
+        background: $mainBlue;
+        color: white;
+        border: 2px solid $mainBlue;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          color: $mainYellow;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: $darkNavy;
+  border-top: 3px solid $mainYellow;
+
+  .footerContent {
+    width: 70%;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    i {
+      font-size: 35px;
+      color: $mainYellow;
+      margin: 0 30px;
+      &:hover {
+        color: white;
+      }
+    }
+
+    .developedBy {
+      display: flex;
+      align-items: center;
+
+      .yellow {
+        color: $mainYellow;
+        padding-left: 10px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  header {
+    nav {
+      li {
+        margin: 0 30px;
+      }
+    }
+  }
+  #aboutSection {
+    .conallPhoto {
+      .imageOfConall {
+        height: 300px;
+        padding-right: 50px;
+      }
+    }
+  }
+  #timetableSection {
+    .listOfDays {
+      width: 75%;
+    }
+    .calendarSection {
+      width: 65%;
+    }
+  }
+  #detailsSection {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .map {
+      padding-top: 40px;
+      iframe {
+        // align-self: center;
+        width: 80vw;
+        // width: 90%;
+        height: 250px;
+      }
+    }
+  }
+  #joinSection {
+    .subscribeBox {
+      width: 70%;
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  header nav li {
+    font-size: 14px;
+  }
+  #aboutSection {
+    flex-direction: column;
+    .conallPhoto {
+      .imageOfConall {
+        height: 300px;
+        padding-right: 50px;
+      }
+    }
+  }
+  .classTypeSection {
+    flex-direction: column;
+    .classesImage {
+      max-height: 400px;
+      flex: 1;
+      .gymImageClasses {
+        height: 400px;
+      }
+    }
+  }
+
+  #timetableSection {
+    .listOfDays {
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
+
+      .firstDays {
+        padding-bottom: 30px;
+
+        #monday {
+          padding-right: 30px;
+        }
+      }
+    }
+  }
+
+  footer {
+    .footerContent {
+      font-size: 15px;
+      i {
+        margin: 0 10px;
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .gymIcons {
+    .classType {
+      // padding: 0 10px;
+
+      .gymIcon {
+        height: 60px;
+        width: 60px;
+        margin: 0 20px;
+      }
+      .linkText {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .map {
+    padding-top: 40px;
+    iframe {
+      width: 60vw;
+      height: 250px;
+    }
+  }
+
+  .classTypeSection {
+    .mainClassText {
+      padding-bottom: 300px;
+      z-index: -1;
+    }
+    .classesImage {
+      // flex: 2;
+      // min-height: 450px;
+      justify-content: center;
+      margin: 0 auto;
+      .gymImageClasses {
+        width: 90vw !important;
+        box-shadow: 0 0 10px #696969;
+        z-index: 2;
+        margin-top: -200px;
+      }
+    }
+  }
+  #aboutSection {
+    margin-top: -200px;
+  }
+
+  #joinSection {
+    .subscribeBox {
+      padding: 20px;
+      .mainBox {
+        .submit {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  footer {
+    .footerContent {
+      width: 90%;
+      font-size: 12px;
+    }
+  }
+
+  #smDisplay {
+    display: inline;
+  }
+  #lrgDisplay {
+    display: none;
+  }
+}
